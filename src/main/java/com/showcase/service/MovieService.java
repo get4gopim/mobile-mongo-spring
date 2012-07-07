@@ -13,5 +13,7 @@ public interface MovieService {
 	public void deleteMovie(BigInteger id);
 	public Movie getMovieById(BigInteger id);
 	public void updateMovie(Movie movie, BigInteger id);
+	public List<Movie> findByMusicDirector(String musicDirector);
+	public List<Movie> findByFlimDirector(String flimDirector);
 	
 }

@@ -46,8 +46,8 @@
 		  		<tr>
 		    		<td>${status.count}</td>
 		    		<td>${row.title}</td>
-		    		<td>${row.flimDirector}</td>
-		    		<td>${row.musicDirector}</td>
+		    		<td><a href="browse.htm?searchBy=director&value=${row.flimDirector}">${row.flimDirector}</a></td>
+		    		<td><a href="browse.htm?searchBy=music&value=${row.musicDirector}">${row.musicDirector}</a></td>
 		    		<td><a href="deletemovie.htm?id=${row.id}"><img border="0" alt="Delete" src="resources/images/delete.png" /></a></td>
 		    		<td><a href="editmovie.htm?id=${row.id}"><img border="0" alt="Edit" src="resources/images/edit.png" /></a></td>
 		  		</tr>		  		

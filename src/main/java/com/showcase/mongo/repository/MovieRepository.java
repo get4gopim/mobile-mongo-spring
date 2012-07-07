@@ -14,6 +14,8 @@ public interface MovieRepository extends CrudRepository<Movie, BigInteger> {
 	
 	List<Movie> findByMusicDirector(String musicDirector);
 	
+	List<Movie> findByFlimDirector(String flimDirector);
+	
 	List<Movie> findByMusicDirectorAndFlimDirector(String musicDirector, String flimDirector);
 	
 	List<Movie> findByTitleLike(String title);

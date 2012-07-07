@@ -56,6 +56,20 @@ public class MovieServiceImpl implements MovieService {
 		return results;
 	}
 	
+	public List<Movie> findByMusicDirector(String musicDirector) {
+		logger.info("findAllMovies ...");
+		List<Movie> results = (List<Movie>) movieRepository.findByMusicDirector(musicDirector);
+		logger.info("results = " + results);
+		return results;
+	}
+	
+	public List<Movie> findByFlimDirector(String flimDirector) {
+		logger.info("findByMusicDirector ...");
+		List<Movie> results = (List<Movie>) movieRepository.findByFlimDirector(flimDirector);
+		logger.info("results = " + results);
+		return results;
+	}
+	
 	public void addMovie(Movie movie) {
 		logger.info("addMovie ... = " + movie);
 		movieRepository.save(movie);

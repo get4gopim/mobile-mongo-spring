@@ -63,7 +63,16 @@ public class BrowseController {
 		
 		//movieService.insertDataFirstTime();
 		
-		mav.addObject("listMovies", movieService.findAllMovies());
+		String searchBy = servletRequest.getParameter("searchBy");
+		if (searchBy != null && searchBy.equalsIgnoreCase("music")) {
+			String musicDirector = servletRequest.getParameter("value");
+			mav.addObject("listMovies", movieService.findByMusicDirector(musicDirector));
+		} else if (searchBy != null && searchBy.equalsIgnoreCase("director")) {
+			String flimDirector = servletRequest.getParameter("value");
+			mav.addObject("listMovies", movieService.findByFlimDirector(flimDirector));
+		} else {
+			mav.addObject("listMovies", movieService.findAllMovies());
+		}
 		mav.setViewName("browse");
 		
 		return mav;
@@ -103,7 +112,7 @@ public class BrowseController {
 	
 	@RequestMapping("/deletemovie")
 	public ModelAndView deletemovie(HttpServletRequest servletRequest) {
-		logger.info("addmovie ...");
+		logger.info("deletemovie ...");
 		ModelAndView mav = new ModelAndView();
 		
 		BigInteger id = new BigInteger( servletRequest.getParameter("id") );
