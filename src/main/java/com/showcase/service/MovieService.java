@@ -1,0 +1,17 @@
+package com.showcase.service;
+
+import java.math.BigInteger;
+import java.util.List;
+
+import com.showcase.mongo.domain.Movie;
+
+public interface MovieService {
+
+	public void insertDataFirstTime();
+	public List<Movie> findAllMovies();
+	public void addMovie(Movie movie);
+	public void deleteMovie(BigInteger id);
+	public Movie getMovieById(BigInteger id);
+	public void updateMovie(Movie movie, BigInteger id);
+	
+}
