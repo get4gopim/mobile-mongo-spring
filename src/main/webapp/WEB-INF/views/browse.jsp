@@ -71,8 +71,11 @@
 		<div id="footer" class="ft-large">
 			<p>
 				<spring:message code="site.copyrights" />
+				<a href="http://www.facebook.com/get4gopi"><img border="0" alt="Follow us on facebook" src="resources/images/facebook.png" /></a>
+				<a href="https://twitter.com/get4gopi"><img border="0" alt="Follow us on twitter" src="resources/images/twitter.png" /></a>
 			</p>
 		</div>
+		
 	</div>
 </body>
 </html>
