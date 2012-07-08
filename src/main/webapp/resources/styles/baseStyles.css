@@ -34,7 +34,7 @@ body {
 	height: 3em;
 }
 #footer.ft-large {
-	height: 9em;
+	height: 4em;
 }
 /*
  * BASIC ELEMENTS
@@ -921,6 +921,16 @@ form label {
 }
 		
 input[type='text'] { 
+	border: 1px solid #D8D8D8;
+	background: #FFF url(../images/img-form-input-shadow.png) repeat-x top;
+	display: block;
+	padding: 0.2em;
+	width: 98%;		
+	color: #333333;
+	margin-bottom: 1em;
+}
+
+input[type='password'] { 
 	border: 1px solid #D8D8D8;
 	background: #FFF url(../images/img-form-input-shadow.png) repeat-x top;
 	display: block;

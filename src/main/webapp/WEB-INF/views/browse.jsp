@@ -6,6 +6,10 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title><spring:message code="site.title" /></title>
+	
+	<link href="resources/styles/reset.css" rel="stylesheet" type="text/css" />
+	<link href="resources/styles/baseStyles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="resources/scripts/templates.js" /></script>
 	<script type="text/javascript">
 		function init() {
 			var myStyleTweaks = new StyleTweaker();
@@ -30,17 +34,16 @@
 		<div id="header"></div>
 		
 		<h3>Movie Browse</h3>
-		<table>
+		<table border="0" cellpadding="1" cellspacing="1">
 	  		<caption>
 	    		All Movie Categories
 	  		</caption>
 	  		<tr>
 	  			<th scope="col">S.No</th>
-	    		<th scope="col">Movie Name</th>
+	    		<th scope="col">Movie</th>
 	    		<th scope="col">Director</th>
-	    		<th scope="col">Music By</th>
-	    		<th scope="col">Delete</th>
-	    		<th scope="col">Edit</th>
+	    		<th scope="col">Music</th>
+	    		<th scope="col">Actions</th>
 	 		</tr>
 	 		<c:forEach var="row" items="${listMovies}" varStatus="status">
 		  		<tr>
@@ -48,25 +51,23 @@
 		    		<td>${row.title}</td>
 		    		<td><a href="browse.htm?searchBy=director&value=${row.flimDirector}">${row.flimDirector}</a></td>
 		    		<td><a href="browse.htm?searchBy=music&value=${row.musicDirector}">${row.musicDirector}</a></td>
-		    		<td><a href="deletemovie.htm?id=${row.id}"><img border="0" alt="Delete" src="resources/images/delete.png" /></a></td>
-		    		<td><a href="editmovie.htm?id=${row.id}"><img border="0" alt="Edit" src="resources/images/edit.png" /></a></td>
+		    		<td align="left">
+		    			<a href="deletemovie.htm?id=${row.id}"><img border="0" alt="Delete" src="resources/images/delete.png" /></a>
+		    			&nbsp;&nbsp;
+		    			<a href="editmovie.htm?id=${row.id}"><img border="0" alt="Edit" src="resources/images/edit.png" /></a>
+		    		</td>
 		  		</tr>		  		
 	  		</c:forEach>
 		</table>
 		
-		<div>
-			<table>
-				<tr >
-		    		<td><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></td>
-		    		<td>&nbsp;</td>
-		    		<td>&nbsp;</td>
-		    		<td><a href="filename.htm?path=addmovie"><img border="0" alt="Add" src="resources/images/cd_add.png" /></td>
-		    		<td>&nbsp;</td>
-		    		<td>&nbsp;</td>
-		    		<td><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></td>
-		    	</tr>
-	    	</table>
-		</div>
+		<br />
+		<br />
+		
+		<ul class="button-rounded">
+			<li><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></li>
+			<li><a href="filename.htm?path=addmovie"><img border="0" alt="Add" src="resources/images/cd_add.png" /></a></li>
+			<li><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a></li>
+		</ul>
 		
 		<div id="footer" class="ft-large">
 			<p>

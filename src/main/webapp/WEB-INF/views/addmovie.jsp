@@ -6,6 +6,11 @@
 <head>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<title><spring:message code="site.title" /></title>
+	
+	<link href="resources/styles/reset.css" rel="stylesheet" type="text/css" />
+	<link href="resources/styles/baseStyles.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="resources/scripts/templates.js" /></script>
+	
 	<script type="text/javascript">
 		function init() {
 			var myStyleTweaks = new StyleTweaker();
@@ -26,59 +31,52 @@
 	</script>
 </head>
 <body>
-<form action="addmovie.htm" method="post" id="addMovieForm">
-	<div id="wrap">
-		<div id="header"></div>
 		
-		<h3>Add Movie Request</h3>
-		<table>
-	  		<caption>
-	    		Enter all the movie information
-	  		</caption>
-	 		
-	 		<tr>
-	    		<td>Movie Name</td>
-	    		<td><input name="title" id="title" type="text" value="<c:if test="${movie != null}">${movie.title}</c:if>" /></td>
-	    	</tr>	
-	  		<tr>
-	    		<td>Actor Name</td>
-	    		<td><input name="actor" id="actor" type="text" value="<c:if test="${movie != null}">${movie.actorName}</c:if>" /></td>
-	    	</tr>
-	    	<tr>
-	    		<td>Actress Name</td>
-	    		<td><input name="actress" id="actress" type="text" value="<c:if test="${movie != null}">${movie.actressName}</c:if>" /></td>
-	    	</tr>
-	    	<tr>
-	    		<td>Directed By</td>
-	    		<td><input name="director" id="director" type="text" value="<c:if test="${movie != null}">${movie.flimDirector}</c:if>" /></td>
-	    	</tr>
-	    	<tr>
-	    		<td>Music By</td>
-	    		<td><input name="music" id="music" type="text" value="<c:if test="${movie != null}">${movie.musicDirector}</c:if>" /></td>
-	    	</tr>
-	    	<tr>
-	    		<c:if test="${movie == null}">
-	    			<td colspan="2"><input name="btnAddMovie" id="btnAddMovie" value="Add Movie" type="submit" /></td>
-	    		</c:if>
-	    		<c:if test="${movie != null}">
-	    			<td colspan="2">
-	    				<input name="btnAddMovie" id="btnAddMovie" value="Update Movie" type="submit" />
-	    				<input name="id" id="id" value="${movie.id}" type="hidden" />
-	    			</td>
-	    		</c:if>
-	    	</tr>		  		
-		</table>
+		<div id="content">
+			<h1 class="top-aligned">Add Movie Request</h1>
+			<div class="box-flat">
+			<form action="addmovie.htm" method="post" id="addMovieForm">
+				<fieldset>
+					<legend>Movie Information</legend>
+					<label>Movie Name</label>
+					<input name="title" id="title" type="text" value="<c:if test="${movie != null}">${movie.title}</c:if>" />
+					<label>Actor Name</label>
+					<input name="actor" id="actor" type="text" value="<c:if test="${movie != null}">${movie.actorName}</c:if>" />
+					<label>Actress Name</label>
+					<input name="actress" id="actress" type="text" value="<c:if test="${movie != null}">${movie.actressName}</c:if>" />
+					<label>Directed By</label>
+					<input name="director" id="director" type="text" value="<c:if test="${movie != null}">${movie.flimDirector}</c:if>" />
+					<label>Music By</label>
+					<input name="music" id="music" type="text" value="<c:if test="${movie != null}">${movie.musicDirector}</c:if>" />
+					
+					<!--alternate submit button-->
+					<!--input name="button" type="button" id="button" value="Submit" /-->
+					<c:if test="${movie == null}">
+		    			<input name="btnAddMovie" id="btnAddMovie" value="Add Movie" type="submit" class="button-submit" />
+		    		</c:if>
+		    		<c:if test="${movie != null}">
+		    				<input name="btnAddMovie" id="btnAddMovie" value="Update Movie" type="submit" class="button-submit" />
+		    				<input name="id" id="id" value="${movie.id}" type="hidden" />
+		    		</c:if>
+				</fieldset>
+			</form>
+		</div>
 		
-		<div>
+		<ul class="button-rounded">
+			<li><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></li>
+			<li><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a></li>
+		</ul>
+		
+		<!-- <div>
 			<table>
 				<tr >
-		    		<td><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></td>
-		    		<td>&nbsp;</td>
-		    		<td>&nbsp;</td>
-		    		<td><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></td>
+		    		<td>
+			    		<a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a>
+			    		<a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a>
+		    		</td>
 		    	</tr>
 	    	</table>
-		</div>
+		</div>  -->
 		
 		<div id="footer" class="ft-large">
 			<p>
@@ -89,6 +87,6 @@
 		</div>
 		
 	</div>
-</form>	
+	
 </body>
 </html>

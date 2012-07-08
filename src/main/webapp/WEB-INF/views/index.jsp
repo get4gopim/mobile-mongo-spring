@@ -7,6 +7,11 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title><spring:message code="site.title" /></title>
+
+<link href="resources/styles/reset.css" rel="stylesheet" type="text/css" />
+<link href="resources/styles/baseStyles.css" rel="stylesheet"
+	type="text/css" />
+<script type="text/javascript" src="resources/scripts/templates.js" /></script>
 <script type="text/javascript">
 	function init() {
 		var myStyleTweaks = new StyleTweaker();
@@ -27,51 +32,35 @@
 </script>
 </head>
 <body>
-	<div id="wrap">
-		<div id="header">
-			<h1>
-				<spring:message code="site.header" />
-				<h3>${currentDevice}</h3>
-			</h1>
+
+		<div id="wrap">
+			<div id="header"></div>
+			<div id="content">
+				<h1><spring:message code="site.header" /></h1>
+				<h3>Current Device : ${currentDevice}</h3>
+				<ul class="list">
+					<li><a href="browse.htm">Movie Library</a></li>
+					<li><a href="filename.htm?path=addmovie">Add Movie</a></li>
+					<li><a href="#">Rent Movie</a></li>
+					<li><a href="#">Account Settings</a></li>
+					<li><a href="filename.htm?path=signin">Sing In</a></li>
+					<li><a href="filename.htm?path=contacts">Contact Us</a></li>
+					<li><a href="filename.htm?path=about">About Us</a></li>
+				</ul>
+			</div>
+			
+			<div id="header"></div>
+
+			<div id="footer" class="ft-large">
+				<p>
+					<spring:message code="site.copyrights" />
+					<a href="http://www.facebook.com/get4gopi"><img border="0"
+						alt="Follow us on facebook" src="resources/images/facebook.png" /></a>
+					<a href="https://twitter.com/get4gopi"><img border="0"
+						alt="Follow us on twitter" src="resources/images/twitter.png" /></a>
+				</p>
+			</div>
+			
 		</div>
-		
-		<!-- <div id="content">
-			<ul class="list">
-				<li><img alt="Browse" src="resources/images/browse.png" /><a href="browse.htm">Movie Library</a></li>
-				<li><img alt="Add" src="resources/images/cd_add.png" /><a href="filename.htm?path=addmovie">Add Movie</a></li>
-				<li><img alt="" src="resources/images/contact.png" /><a href="filename.htm?path=contacts">Contact us</a></li>
-				<li><img alt="" src="resources/images/about.png" /><a href="filename.htm?path=about">About us</a></li>
-			</ul>
-		</div> -->
-		
-		<div>
-			<table>
-				<tr>
-		    		<td><img alt="Browse" src="resources/images/browse.png" /></td>
-		    		<td><a href="browse.htm">Movie Library</a></td>
-		    	</tr>
-		    	<tr>
-		    		<td><img alt="Add" src="resources/images/cd_add.png" /></td>
-		    		<td><a href="filename.htm?path=addmovie">Add Movie</a></td>
-		    	</tr>
-		    	<tr>
-		    		<td><img alt="" src="resources/images/contact.png" /></td>
-		    		<td><a href="filename.htm?path=contact">Contact Us</a></td>
-		    	</tr>
-		    	<tr>
-		    		<td><img alt="" src="resources/images/about.png" /></td>
-		    		<td><a href="filename.htm?path=about">About Us</a></td>
-		    	</tr>
-	    	</table>
-		</div>
-		
-		<div id="footer" class="ft-large">
-			<p>
-				<spring:message code="site.copyrights" />
-				<a href="http://www.facebook.com/get4gopi"><img border="0" alt="Follow us on facebook" src="resources/images/facebook.png" /></a>
-				<a href="https://twitter.com/get4gopi"><img border="0" alt="Follow us on twitter" src="resources/images/twitter.png" /></a>
-			</p>
-		</div>
-	</div>
 </body>
 </html>
