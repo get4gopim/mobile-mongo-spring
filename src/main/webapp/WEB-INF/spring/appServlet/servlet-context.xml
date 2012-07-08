@@ -37,7 +37,7 @@
 		
 		<beans:bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="urlPath">
 			<beans:constructor-arg value="/mobile" />
-			<beans:constructor-arg value="/springmobile" />  
+			<beans:constructor-arg value="" />  
 		</beans:bean> 
 		
 	</interceptors>

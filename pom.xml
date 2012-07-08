@@ -24,6 +24,7 @@
 		<org.codehaus.mojo.tomcat-version>1.1</org.codehaus.mojo.tomcat-version>
 		
 		<spring.data.mongo.version>1.0.0.M4</spring.data.mongo.version>
+		<org.cloudfoundry-version>0.8.1</org.cloudfoundry-version>
 	</properties>
 	
 	<repositories>
@@ -166,6 +167,13 @@
 			<groupId>org.springframework.data</groupId>
 			<artifactId>spring-data-mongodb</artifactId>
 			<version>${spring.data.mongo.version}</version>
+		</dependency>
+		
+		<!-- CloudFoundry -->
+		<dependency>
+		   <groupId>org.cloudfoundry</groupId>
+		   <artifactId>cloudfoundry-runtime</artifactId>
+		   <version>${org.cloudfoundry-version}</version>
 		</dependency>
 		
 	</dependencies>
