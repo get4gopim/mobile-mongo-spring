@@ -41,8 +41,8 @@
 				<ul class="list">
 					<li><a href="browse.htm">Movie Library</a></li>
 					<li><a href="filename.htm?path=addmovie">Add Movie</a></li>
-					<li><a href="#">Rent Movie</a></li>
-					<li><a href="#">Account Settings</a></li>
+					<li><a href="filename.htm?path=feedback">Feedback</a></li>
+					<li><a href="viewfeeds.htm">View All Feeds</a></li>
 					<li><a href="filename.htm?path=signin">Sing In</a></li>
 					<li><a href="filename.htm?path=contacts">Contact Us</a></li>
 					<li><a href="filename.htm?path=about">About Us</a></li>

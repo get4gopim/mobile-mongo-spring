@@ -35,6 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.showcase.mongo.domain.Feedback;
 import com.showcase.mongo.domain.Movie;
 import com.showcase.mongo.repository.MovieRepository;
 import com.showcase.service.MovieService;
@@ -137,6 +138,51 @@ public class BrowseController {
 		logger.info("editmovie sucess ... redirect to browse... ");
 		//mav.setView(new RedirectView("browse.htm"));
 		mav.setViewName("addmovie");
+		return mav;
+	}
+	
+	
+	@RequestMapping("/savefeed")
+	public ModelAndView savefeed(HttpServletRequest servletRequest) {
+		logger.info("savefeed ...");
+		ModelAndView mav = new ModelAndView();
+		
+		String username = servletRequest.getParameter("username");
+		String email = servletRequest.getParameter("email");
+		String comments = servletRequest.getParameter("comments");
+		
+		Feedback feed = new Feedback(username, email, comments);
+		
+		movieService.saveFeed(feed);
+		
+		logger.info("savefeed sucess ... redirect to browse... ");
+		mav.setView(new RedirectView("viewfeeds.htm"));
+		return mav;
+	}
+	
+	@RequestMapping("/viewfeeds")
+	public ModelAndView viewfeeds(HttpServletRequest servletRequest) {
+		logger.info("viewfeeds ...");
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("listFeeds", movieService.findAllFeeds());
+		
+		mav.setViewName("viewfeeds");
+		
+		return mav;
+	}
+	
+	@RequestMapping("/deletefeed")
+	public ModelAndView deletefeed(HttpServletRequest servletRequest) {
+		logger.info("deletefeed ...");
+		ModelAndView mav = new ModelAndView();
+		
+		BigInteger id = new BigInteger( servletRequest.getParameter("id") );
+		logger.info("id = " + id);
+		movieService.deleteFeedback(id);
+		
+		logger.info("deletefeed sucess ... redirect to viewfeeds... ");
+		mav.setView(new RedirectView("viewfeeds.htm"));
 		return mav;
 	}
 

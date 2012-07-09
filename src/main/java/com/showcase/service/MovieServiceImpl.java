@@ -10,7 +10,9 @@ import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 
 import com.showcase.mobile.BrowseController;
+import com.showcase.mongo.domain.Feedback;
 import com.showcase.mongo.domain.Movie;
+import com.showcase.mongo.repository.FeedbackRepository;
 import com.showcase.mongo.repository.MovieRepository;
 
 @Component
@@ -20,6 +22,9 @@ public class MovieServiceImpl implements MovieService {
 
 	@Autowired
 	private MovieRepository movieRepository;
+	
+	@Autowired
+	private FeedbackRepository feedbackRepository;
 	
 	@Autowired
 	private MongoOperations mongoOperations;
@@ -100,5 +105,25 @@ public class MovieServiceImpl implements MovieService {
 		m.setFlimDirector(movie.getFlimDirector());
 		movieRepository.save(m);
 		logger.info("updateMovie finished");
+	}
+	
+	public void saveFeed(Feedback feedback) {
+		logger.info("saveFeed ... = " + feedback);
+		feedbackRepository.save(feedback);
+		logger.info("saveFeed finished");
+	}
+	
+	public List<Feedback> findAllFeeds() {
+		logger.info("findAllMovies ...");
+		List<Feedback> results = (List<Feedback>) feedbackRepository.findAll();
+		logger.info("results = " + results);
+		return results;
+	}
+	
+	public void deleteFeedback(BigInteger id) {
+		logger.info("deleteFeedback ... = " + id);
+		Feedback feedback = feedbackRepository.findOne(id);
+		feedbackRepository.delete(feedback);
+		logger.info("deleteFeedback finished");
 	}
 }

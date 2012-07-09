@@ -67,17 +67,6 @@
 			<li><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a></li>
 		</ul>
 		
-		<!-- <div>
-			<table>
-				<tr >
-		    		<td>
-			    		<a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a>
-			    		<a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a>
-		    		</td>
-		    	</tr>
-	    	</table>
-		</div>  -->
-		
 		<div id="footer" class="ft-large">
 			<p>
 				<spring:message code="site.copyrights" />

@@ -32,31 +32,26 @@
 </head>
 <body>
 		
-		<div class="box-rounded">
-			<div class="box-rounded-inner">
-				<div class="box-rounded-outer">
-					<h2>Contact Us</h2>
-					<p>
-						<spring:message code="contact.address.line1"/><br />
-						<spring:message code="contact.address.line2"/><br />
-						<spring:message code="contact.address.line3"/><br />
-						<spring:message code="contact.address.line4"/><br />  
-						<spring:message code="contact.address.line5"/><br />
-					</p>
+		<div id="content">
+			<h1 class="top-aligned">Sign In</h1>
+			<div class="box-flat">
+			<form action="#" method="post" id="addMovieForm">
+				<fieldset>
+					<legend>Login Information</legend>
+					<label>User Name</label>
+					<input name="title" id="title" type="text" />
+					<label>Password</label>
+					<input name="actor" id="actor" type="password" />
 					
-					<h2>Email :</h2>
-					<p>get4gopim@gmail.com</p>
-					
-					<h2>Contact :</h2>
-					<p>99520 13448</p>	
-				</div>
-			</div>
+					<input name="btnSubmit" id="btnSubmit" value="Login" type="submit" class="button-submit" />
+				</fieldset>
+			</form>
 		</div>
 		
 		<ul class="button-rounded">
 			<li><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></li>
-			<li><a href="filename.htm?path=addmovie"><img border="0" alt="Add" src="resources/images/cd_add.png" /></a></li>
-			<li><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a></li>
+			<li><a href="filename.htm?path=contacts"><img border="0" alt="Contact" src="resources/images/contact.png" /></a></li>
+			<li><a href="filename.htm?path=about"><img border="0" alt="About" src="resources/images/about.png" /></a></li>
 		</ul>
 		
 		<div id="footer" class="ft-large">
