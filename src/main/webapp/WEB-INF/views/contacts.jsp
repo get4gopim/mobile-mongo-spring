@@ -55,8 +55,9 @@
 		
 		<ul class="button-rounded">
 			<li><a href="index.htm"><img border="0" alt="Home" src="resources/images/home.png" /></a></li>
-			<li><a href="filename.htm?path=addmovie"><img border="0" alt="Add" src="resources/images/cd_add.png" /></a></li>
-			<li><a href="browse.htm"><img border="0" alt="Browse" src="resources/images/browse.png" /></a></li>
+			<li><a href="filename.htm?path=contacts"><img border="0" alt="Contact" src="resources/images/contact.png" /></a></li>
+			<li><a href="filename.htm?path=about"><img border="0" alt="About" src="resources/images/about.png" /></a></li>
+			<li><a href="viewfeeds.htm"><img border="0" alt="Browse" src="resources/images/viewfeeds.png" /></a></li>
 		</ul>
 		
 		<div id="footer" class="ft-large">
