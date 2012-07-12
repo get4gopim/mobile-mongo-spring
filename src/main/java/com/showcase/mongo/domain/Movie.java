@@ -25,6 +25,7 @@ public class Movie {
 	
 	private String flimDirector;
 	
+	private String imageUrl;
 	
 
 	public Movie() {
@@ -33,7 +34,7 @@ public class Movie {
 
 	public Movie(String title, String type, boolean isAvailable,
 			String actorName, String actressName, String musicDirector,
-			String flimDirector) {
+			String flimDirector, String imageUrl) {
 		super();
 		this.title = title;
 		this.type = type;
@@ -42,6 +43,7 @@ public class Movie {
 		this.actressName = actressName;
 		this.musicDirector = musicDirector;
 		this.flimDirector = flimDirector;
+		this.imageUrl = imageUrl;
 	}
 
 	public BigInteger getId() {
@@ -107,14 +109,23 @@ public class Movie {
 	public void setFlimDirector(String flimDirector) {
 		this.flimDirector = flimDirector;
 	}
+	
+
+	public String getImageUrl() {
+		return imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 
 	@Override
 	public String toString() {
 		return "Movie [id=" + id + ", title=" + title + ", type=" + type
 				+ ", isAvailable=" + isAvailable + ", actorName=" + actorName
 				+ ", actressName=" + actressName + ", musicDirector="
-				+ musicDirector + ", flimDirector=" + flimDirector + "]";
+				+ musicDirector + ", flimDirector=" + flimDirector
+				+ ", imageUrl=" + imageUrl + "]";
 	}
-	
-	
+
 }

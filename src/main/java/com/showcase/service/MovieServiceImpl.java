@@ -37,12 +37,12 @@ public class MovieServiceImpl implements MovieService {
 			mongoOperations.createCollection(Movie.class);
 		}		
 
-		Movie m1 = new Movie("Endhiran", "BluRay", true, "Rajinikanth", "Aishwarya Rai", "AR Rahman", "Shankar");
-		Movie m2 = new Movie("Ayyan", "BluRay", true, "Surya", "Aishwarya Rai", "Harris Jayaraj", "Sun");
-		Movie m3 = new Movie("Roja", "BluRay", true, "Rajinikanth", "Aishwarya Rai", "AR Rahman", "Manirathnam");
-		Movie m4 = new Movie("Nanban", "BluRay", true, "Vijay", "Illena", "Harris Jayaraj", "Shankar");
-		Movie m5 = new Movie("Bombay", "BluRay", true, "Aravindsamy", "Manisha", "AR Rahman", "Manirathnam");
-		Movie m6 = new Movie("Ayya", "DVD", true, "Sarathkumar", null, "", null);
+		Movie m1 = new Movie("Endhiran", "BluRay", true, "Rajinikanth", "Aishwarya Rai", "AR Rahman", "Shankar", null);
+		Movie m2 = new Movie("Ayyan", "BluRay", true, "Surya", "Aishwarya Rai", "Harris Jayaraj", "Sun", null);
+		Movie m3 = new Movie("Roja", "BluRay", true, "Rajinikanth", "Aishwarya Rai", "AR Rahman", "Manirathnam", null);
+		Movie m4 = new Movie("Nanban", "BluRay", true, "Vijay", "Illena", "Harris Jayaraj", "Shankar", null);
+		Movie m5 = new Movie("Bombay", "BluRay", true, "Aravindsamy", "Manisha", "AR Rahman", "Manirathnam", null);
+		Movie m6 = new Movie("Ayya", "DVD", true, "Sarathkumar", null, "", null, null);
 
 		movieRepository.save(m1);
 		movieRepository.save(m2);
@@ -103,6 +103,7 @@ public class MovieServiceImpl implements MovieService {
 		m.setActressName(movie.getActressName());
 		m.setMusicDirector(movie.getMusicDirector());
 		m.setFlimDirector(movie.getFlimDirector());
+		m.setImageUrl(movie.getImageUrl());
 		movieRepository.save(m);
 		logger.info("updateMovie finished");
 	}

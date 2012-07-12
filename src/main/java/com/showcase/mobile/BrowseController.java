@@ -93,8 +93,9 @@ public class BrowseController {
 		String actressName = servletRequest.getParameter("actress");
 		String musicDirector = servletRequest.getParameter("music");
 		String flimDirector = servletRequest.getParameter("director");
+		String imageUrl = servletRequest.getParameter("imageUrl");
 		
-		Movie movie = new Movie(title, "BluRay", true, actorName, actressName, musicDirector, flimDirector);
+		Movie movie = new Movie(title, "BluRay", true, actorName, actressName, musicDirector, flimDirector, imageUrl);
 		
 		if (action.equalsIgnoreCase("Add Movie")) {
 			movieService.addMovie(movie);

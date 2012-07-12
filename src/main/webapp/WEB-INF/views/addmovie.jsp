@@ -38,6 +38,13 @@
 			<form action="addmovie.htm" method="post" id="addMovieForm">
 				<fieldset>
 					<legend>Movie Information</legend>
+					
+					<c:if test="${movie != null}">
+						<p align="left">
+							<img alt="" src="<c:if test="${movie != null}">${movie.imageUrl}</c:if>" />
+						</p>
+					</c:if>
+					
 					<label>Movie Name</label>
 					<input name="title" id="title" type="text" value="<c:if test="${movie != null}">${movie.title}</c:if>" />
 					<label>Actor Name</label>
@@ -48,6 +55,8 @@
 					<input name="director" id="director" type="text" value="<c:if test="${movie != null}">${movie.flimDirector}</c:if>" />
 					<label>Music By</label>
 					<input name="music" id="music" type="text" value="<c:if test="${movie != null}">${movie.musicDirector}</c:if>" />
+					<label>Image Url</label>
+					<input name="imageUrl" id="imageUrl" type="text" value="<c:if test="${movie != null}">${movie.imageUrl}</c:if>" />
 					
 					<!--alternate submit button-->
 					<!--input name="button" type="button" id="button" value="Submit" /-->
