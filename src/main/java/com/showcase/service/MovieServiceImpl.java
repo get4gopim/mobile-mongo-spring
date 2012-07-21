@@ -1,16 +1,19 @@
 package com.showcase.service;
 
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
+import org.springframework.web.client.RestTemplate;
 
-import com.showcase.mobile.BrowseController;
 import com.showcase.mongo.domain.Feedback;
+import com.showcase.mongo.domain.IMDBMovie;
 import com.showcase.mongo.domain.Movie;
 import com.showcase.mongo.repository.FeedbackRepository;
 import com.showcase.mongo.repository.MovieRepository;
@@ -28,6 +31,9 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Autowired
 	private MongoOperations mongoOperations;
+	
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	public void insertDataFirstTime() {
 		logger.info("insertDataFirstTime ...");
@@ -126,5 +132,21 @@ public class MovieServiceImpl implements MovieService {
 		Feedback feedback = feedbackRepository.findOne(id);
 		feedbackRepository.delete(feedback);
 		logger.info("deleteFeedback finished");
+	}
+	
+	public IMDBMovie getIMDBMovieByTitle(String searchTitle) {
+		IMDBMovie movie = null;
+		String imdbServiceUrl = "http://www.deanclatworthy.com/imdb/?q={title}&type=xml";
+		
+		Map<String, String> vars = new HashMap<String, String>();
+		vars.put("title", searchTitle);
+		
+		try {
+			movie = restTemplate.getForObject(imdbServiceUrl, IMDBMovie.class, vars);
+		} catch (Exception e) {
+			logger.error(e.toString());
+		}
+		
+		return movie;
 	}
 }

@@ -4,6 +4,7 @@ import java.math.BigInteger;
 import java.util.List;
 
 import com.showcase.mongo.domain.Feedback;
+import com.showcase.mongo.domain.IMDBMovie;
 import com.showcase.mongo.domain.Movie;
 
 public interface MovieService {
@@ -20,5 +21,7 @@ public interface MovieService {
 	public void saveFeed(Feedback feedback);
 	public List<Feedback> findAllFeeds();
 	public void deleteFeedback(BigInteger id);
+	
+	public IMDBMovie getIMDBMovieByTitle(String searchTitle);
 	
 }

@@ -38,9 +38,11 @@
 			<div id="content">
 				<h1><spring:message code="site.header" /></h1>
 				<h3>Current Device : ${currentDevice}</h3>
+				
 				<ul class="list">
 					<li><a href="browse.htm">Movie Library</a></li>
 					<li><a href="filename.htm?path=addmovie">Add Movie</a></li>
+					<li><a href="filename.htm?path=imdbsearch">IMDB Search</a></li>
 					<li><a href="filename.htm?path=feedback">Feedback</a></li>
 					<li><a href="viewfeeds.htm">View All Feeds</a></li>
 					<li><a href="filename.htm?path=signin">Sing In</a></li>
