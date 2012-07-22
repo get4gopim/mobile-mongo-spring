@@ -9,8 +9,6 @@
 		http://www.springframework.org/schema/mobile/device http://www.springframework.org/schema/mobile/device/spring-mobile-device-1.0.xsd">
 		 
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
-	
-	
 
 	<!-- Configures the Spring MVC @Controller programming model -->
 	<annotation-driven>
@@ -25,15 +23,20 @@
 	
 
 	<!-- Interceptors that execute common control logic across multiple requests -->
-	<interceptors> 
+	<interceptors>
 	
-		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" /> 
+		<!-- Detects the client's Device -->
+		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
+		
+		<!-- Redirects the client to their preferred site if necessary.
+		This particular configuration redirects clients preferring the mobile site to 'm.testdomain'.
+		NOTE: for this redirect to work testdomain.com and m.testdomain.com must be added to your hosts file when running the app -->
 		
 		<beans:bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="urlPath">
 			<beans:constructor-arg value="/mobile" />
-			<beans:constructor-arg value="" />  
-		</beans:bean> 
-		
+			<beans:constructor-arg value="" />
+		</beans:bean>
+	
 	</interceptors> 
 
 	<!-- Maps view names to JSP templates in /WEB-INF/views  -->
