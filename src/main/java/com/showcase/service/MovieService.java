@@ -17,6 +17,9 @@ public interface MovieService {
 	public void updateMovie(Movie movie, BigInteger id);
 	public List<Movie> findByMusicDirector(String musicDirector);
 	public List<Movie> findByFlimDirector(String flimDirector);
+	public List<Movie> findByTitleLike(String title);
+	public List<Movie> findByActorName(String actorName);
+	public List<Movie> findByActressName(String actressName);
 	
 	public void saveFeed(Feedback feedback);
 	public List<Feedback> findAllFeeds();

@@ -37,14 +37,19 @@ public class IndexController {
 		logger.info("index SitePreference = " + sitePreference);
 		String currentDevice = "";
 		
-		ModelAndView mav = new ModelAndView();
+		ModelAndView  mav = new ModelAndView();
 
 		Device device = DeviceUtils.getCurrentDevice(servletRequest);
-		if (device.isMobile()) currentDevice = "MOBILE";
-		else if (device.isTablet()) currentDevice = "TABLET";
-		else if (device.isNormal()) currentDevice = "NORMAL";
-		mav.addObject("currentDevice", currentDevice);
+		if (device != null) {
+			if (device.isMobile()) currentDevice = "MOBILE";
+			else if (device.isTablet()) currentDevice = "TABLET";
+			else if (device.isNormal()) currentDevice = "NORMAL";
+			
+		} else {
+			currentDevice = "NORMAL";
+		}
 		
+		mav.addObject("currentDevice", currentDevice);
 		mav.setViewName("index");
 		return mav;
 	}

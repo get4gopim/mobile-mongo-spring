@@ -56,30 +56,23 @@
      <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
 		<property name="messageConverters">
 			<list>
-				<!-- We only have one message converter for the RestTemplate, namely the XStream Marshller -->
-				<bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
-					<constructor-arg>
-						<bean class="org.springframework.oxm.xstream.XStreamMarshaller">
-							<!-- Explicitly define the aliases -->
-							
-							<property name="aliases">
-								<props>
-									<prop key="movie">com.showcase.mongo.domain.IMDBMovie</prop>
-								</props>
-							</property>
-							
-							
-							<!-- Tell XStream to find the alias names in the following classes -->
-							<property name="annotatedClasses">
-								<list>
-									<value>com.showcase.mongo.domain.IMDBMovie</value>							
-								</list>						
-							</property>
-						</bean>
-					</constructor-arg>
-				</bean>
+				 <ref bean="jaxbMarshallerConverter" />
 			</list>
 		</property>
 	</bean>
+	
+	<bean id="jaxbMarshallerConverter" class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
+	  <property name="marshaller" ref="jaxbMarshaller" />
+	  <property name="unmarshaller" ref="jaxbMarshaller" />
+	</bean>
+	
+	<bean id="jaxbMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+		<property name="classesToBeBound">
+            <list>
+                <value>com.showcase.mongo.domain.Movie</value>
+                <value>com.showcase.mongo.domain.MovieList</value>                
+            </list>
+        </property>
+    </bean>
 
 </beans>

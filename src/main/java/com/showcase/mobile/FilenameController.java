@@ -53,8 +53,8 @@ public class FilenameController {
 		String path = servletRequest.getParameter("path");
 		logger.info("filename?path = " + path);
 		
-		Device currentDevice = DeviceUtils.getCurrentDevice(servletRequest);
-		mav.addObject("currentDevice", currentDevice.toString());
+		/*Device currentDevice = DeviceUtils.getCurrentDevice(servletRequest);
+		mav.addObject("currentDevice", currentDevice.toString());*/
 		
 		if (path != null)
 			mav.setViewName(path);

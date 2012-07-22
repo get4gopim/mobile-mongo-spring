@@ -49,8 +49,9 @@ public class AboutController {
 	public ModelAndView about(HttpServletRequest servletRequest) {
 		ModelAndView mav = new ModelAndView();
 		
-		Device currentDevice = DeviceUtils.getCurrentDevice(servletRequest);
-		mav.addObject("currentDevice", currentDevice.toString());
+		/*Device currentDevice = DeviceUtils.getCurrentDevice(servletRequest);
+		mav.addObject("currentDevice", currentDevice.toString());*/
+		
 		mav.setViewName("home");
 		return mav;
 	}

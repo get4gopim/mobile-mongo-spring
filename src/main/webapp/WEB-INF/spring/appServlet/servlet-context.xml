@@ -27,27 +27,22 @@
 	<!-- Interceptors that execute common control logic across multiple requests -->
 	<interceptors> 
 	
-		<!-- Detects the client's Device -->
 		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" /> 
-		
-		<!-- Redirects the client to their preferred site if necessary.
-		     This particular configuration redirects clients preferring the mobile site to 'm.testdomain'.
-		     NOTE: for this redirect to work testdomain.com and m.testdomain.com must be added to your hosts 
-		     file when running the app -->
 		
 		<beans:bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="urlPath">
 			<beans:constructor-arg value="/mobile" />
 			<beans:constructor-arg value="" />  
 		</beans:bean> 
 		
-	</interceptors>
+	</interceptors> 
 
-	<!-- Maps view names to JSP templates in /WEB-INF/views -->
+	<!-- Maps view names to JSP templates in /WEB-INF/views  -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/" />	
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
-
+   
+    
 	<!-- Imports the application controllers that process client requests -->
 	<beans:import resource="controllers.xml" />
 	<beans:import resource="app-context.xml" />

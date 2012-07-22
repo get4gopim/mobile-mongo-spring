@@ -2,9 +2,12 @@ package com.showcase.mongo.domain;
 
 import java.math.BigInteger;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+@XmlRootElement(name="Movie")
 @Document
 public class Movie {
 

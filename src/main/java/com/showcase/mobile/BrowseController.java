@@ -22,25 +22,16 @@ import javax.servlet.http.HttpServletRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mobile.device.Device;
-import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.mobile.device.site.SitePreference;
-import org.springframework.mobile.device.site.SitePreferenceUtils;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
-import org.springframework.web.util.UrlPathHelper;
 
 import com.showcase.mongo.domain.Feedback;
 import com.showcase.mongo.domain.IMDBMovie;
 import com.showcase.mongo.domain.Movie;
-import com.showcase.mongo.repository.MovieRepository;
 import com.showcase.service.MovieService;
 
 /**
@@ -146,26 +137,7 @@ public class BrowseController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/imdbsearchmovie")
-	public ModelAndView imdbsearchmovie(String id, HttpServletRequest servletRequest) {
-		logger.info("editmovie ...");
-		ModelAndView mav = new ModelAndView();
-		
-		String searchTitle = servletRequest.getParameter("searchTitle");
-		logger.info("searchTitle = " + searchTitle);
-		
-		IMDBMovie movie = movieService.getIMDBMovieByTitle(searchTitle);
-		if (movie != null) {
-			mav.addObject("movie", movie);
-		} else {
-			mav.addObject("error", "Movie Not Found!!");
-		}
-		
-		logger.info("imdbsearchmovie sucess ... redirect to browse... ");
-		
-		mav.setViewName("imdbsearch");
-		return mav;
-	}
+	
 	
 	
 	@RequestMapping("/savefeed")
@@ -209,6 +181,27 @@ public class BrowseController {
 		
 		logger.info("deletefeed sucess ... redirect to viewfeeds... ");
 		mav.setView(new RedirectView("viewfeeds.htm"));
+		return mav;
+	}
+	
+	@RequestMapping(value="/imdbsearchmovie")
+	public ModelAndView imdbsearchmovie(String id, HttpServletRequest servletRequest) {
+		logger.info("editmovie ...");
+		ModelAndView mav = new ModelAndView();
+		
+		String searchTitle = servletRequest.getParameter("searchTitle");
+		logger.info("searchTitle = " + searchTitle);
+		
+		IMDBMovie movie = movieService.getIMDBMovieByTitle(searchTitle);
+		if (movie != null) {
+			mav.addObject("movie", movie);
+		} else {
+			mav.addObject("error", "Movie Not Found!!");
+		}
+		
+		logger.info("imdbsearchmovie sucess ... redirect to browse... ");
+		
+		mav.setViewName("imdbsearch");
 		return mav;
 	}
 
