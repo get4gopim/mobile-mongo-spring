@@ -5,15 +5,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.openspaces.core.GigaSpace;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.mongodb.core.MongoOperations;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.gigaspaces.client.WriteModifiers;
+import com.j_spaces.core.client.SQLQuery;
 import com.showcase.mongo.domain.Feedback;
 import com.showcase.mongo.domain.IMDBMovie;
+import com.showcase.mongo.domain.LandingPadNumber;
 import com.showcase.mongo.domain.Movie;
 import com.showcase.mongo.repository.FeedbackRepository;
 import com.showcase.mongo.repository.MovieRepository;
@@ -34,6 +39,43 @@ public class MovieServiceImpl implements MovieService {
 	
 	@Autowired
 	private RestTemplate restTemplate;
+	
+	@Autowired
+	private GigaSpace gigaSpaces;
+	
+	public void saveInCache(String callId, String tfn) {
+		LandingPadNumber lpn = new LandingPadNumber(tfn, "3454", callId);
+		
+		if (gigaSpaces != null) {
+			logger.info("gigaspaces write " + lpn);
+			gigaSpaces.write(lpn, WriteModifiers.UPDATE_OR_WRITE);
+		} else {
+			logger.info("gigaspaces null");
+		}
+	}
+	
+	public void getFromCache(String tfn) {
+		logger.info("gigaspaces getFromCache");
+		
+		if (gigaSpaces != null) {
+			//SQLQuery<LandingPadNumber> query = new SQLQuery<LandingPadNumber>(LandingPadNumber.class);
+			SQLQuery<LandingPadNumber> query = new SQLQuery<LandingPadNumber>(LandingPadNumber.class, 
+				    "landingPadNumber = ?");
+			query.setParameters("9952013448"); // 9952013448
+			
+			LandingPadNumber[] result = gigaSpaces.readMultiple(query);
+		
+			if (result != null && result.length > 0) {
+				for (LandingPadNumber lpn : result) {
+					logger.info(lpn.toString());
+				}
+			} else {
+				logger.info("gigaspaces result empty");
+			}
+		} else {
+			logger.info("gigaspaces null");
+		}
+	}
 	
 	public void insertDataFirstTime() {
 		logger.info("insertDataFirstTime ...");
@@ -169,5 +211,23 @@ public class MovieServiceImpl implements MovieService {
 		}
 		
 		return movie;
+	}
+	
+	@Cacheable("actor")
+	public List<Movie> findByActorNameLike(String value) {
+		logger.debug("findByActorNameLike : " + value);
+		return (List<Movie>) movieRepository.findByActorNameLike(value);
+	}
+	
+	public List<Movie> findByActressNameLike(String value) {
+		return (List<Movie>) movieRepository.findByActressNameLike(value);
+	}
+	
+	public List<Movie> findByMusicDirectorLike(String value) {
+		return (List<Movie>) movieRepository.findByMusicDirectorLike(value);
+	}
+	
+	public List<Movie> findByFlimDirectorLike(String value) {
+		return (List<Movie>) movieRepository.findByFlimDirectorLike(value);
 	}
 }

@@ -17,7 +17,6 @@ public interface MovieService {
 	public void updateMovie(Movie movie, BigInteger id);
 	public List<Movie> findByMusicDirector(String musicDirector);
 	public List<Movie> findByFlimDirector(String flimDirector);
-	public List<Movie> findByTitleLike(String title);
 	public List<Movie> findByActorName(String actorName);
 	public List<Movie> findByActressName(String actressName);
 	
@@ -27,4 +26,13 @@ public interface MovieService {
 	
 	public IMDBMovie getIMDBMovieByTitle(String searchTitle);
 	
+	public List<Movie> findByTitleLike(String title);
+	public List<Movie> findByActorNameLike(String value);
+	public List<Movie> findByActressNameLike(String value);
+	public List<Movie> findByMusicDirectorLike(String value);
+	public List<Movie> findByFlimDirectorLike(String value);
+	
+	
+	public void saveInCache(String callId, String tfn);
+	public void getFromCache(String tfn);
 }

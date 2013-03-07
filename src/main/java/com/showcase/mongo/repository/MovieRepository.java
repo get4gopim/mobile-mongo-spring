@@ -24,4 +24,12 @@ public interface MovieRepository extends CrudRepository<Movie, BigInteger> {
 	
 	List<Movie> findByTitleLike(String title);
 	
+	List<Movie> findByActorNameLike(String actorName);
+	
+	List<Movie> findByActressNameLike(String actressName);
+	
+	List<Movie> findByMusicDirectorLike(String musicDirector);
+	
+	List<Movie> findByFlimDirectorLike(String flimDirector);
+	
 }

@@ -2,6 +2,7 @@
 <beans:beans xmlns="http://www.springframework.org/schema/mvc"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:device="http://www.springframework.org/schema/mobile/device"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
@@ -22,38 +23,43 @@
 	
 
 	<!-- Interceptors that execute common control logic across multiple requests -->
-	<interceptors> 
+	<interceptors>
 	
 		<!-- Detects the client's Device -->
-		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" /> 
+		<beans:bean class="org.springframework.mobile.device.DeviceResolverHandlerInterceptor" />
 		
 		<!-- Redirects the client to their preferred site if necessary.
-		     This particular configuration redirects clients preferring the mobile site to 'm.testdomain'.
-		     NOTE: for this redirect to work testdomain.com and m.testdomain.com must be added to your hosts 
-		     file when running the app -->
+		This particular configuration redirects clients preferring the mobile site to 'm.testdomain'.
+		NOTE: for this redirect to work testdomain.com and m.testdomain.com must be added to your hosts file when running the app -->
 		
 		<beans:bean class="org.springframework.mobile.device.switcher.SiteSwitcherHandlerInterceptor" factory-method="urlPath">
 			<beans:constructor-arg value="/mobile" />
-			<beans:constructor-arg value="/" />  
-		</beans:bean> 
-		
-	</interceptors>
+			<beans:constructor-arg value="" />
+		</beans:bean>
+	
+	</interceptors> 
 
-	<!-- Maps view names to JSP templates in /WEB-INF/views -->
+	<!-- Maps view names to JSP templates in /WEB-INF/views  -->
     <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <beans:property name="prefix" value="/WEB-INF/views/" />	
         <beans:property name="suffix" value=".jsp" />
     </beans:bean>
-
+   
+    
 	<!-- Imports the application controllers that process client requests -->
 	<beans:import resource="controllers.xml" />
+	<beans:import resource="app-context.xml" />
 	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" >
-        <beans:property name="basenames">
+        <!-- <beans:property name="basenames">
             <beans:list>
-                <beans:value>com/showcase/conf/messages</beans:value>
+                <beans:value>classpath:com/showcase/jms/listener/messages</beans:value>
             </beans:list>
-        </beans:property>
+        </beans:property> -->
+        
+        <beans:property name="basename">
+			<beans:value>messages</beans:value>
+		</beans:property>
     </beans:bean>
 
 </beans:beans>

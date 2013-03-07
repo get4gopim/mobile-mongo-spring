@@ -29,6 +29,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.showcase.jms.producer.JmsMessageProducer;
 import com.showcase.mongo.domain.Feedback;
 import com.showcase.mongo.domain.IMDBMovie;
 import com.showcase.mongo.domain.Movie;
@@ -45,6 +46,9 @@ public class BrowseController {
 	
 	@Autowired
 	private MovieService movieService;
+	
+	//@Autowired
+	private JmsMessageProducer producer;
 
 	/**
 	 * Show the home page to the user. 
@@ -69,6 +73,8 @@ public class BrowseController {
 			mav.addObject("listMovies", movieService.findAllMovies());
 		}
 		mav.setViewName("browse");
+		
+		movieService.saveInCache("34534", "9952013448");
 		
 		return mav;
 	}
@@ -100,6 +106,7 @@ public class BrowseController {
 			movieService.updateMovie(movie, id);
 		}
 		
+		movieService.getFromCache("9952013448");
 		
 		logger.info("addmovie sucess ... redirect to browse... ");
 		mav.setView(new RedirectView("browse.htm"));
@@ -202,6 +209,24 @@ public class BrowseController {
 		logger.info("imdbsearchmovie sucess ... redirect to browse... ");
 		
 		mav.setViewName("imdbsearch");
+		return mav;
+	}
+	
+	@RequestMapping(value="/jmxInvoke")
+	public ModelAndView jmxInvoke(String id, HttpServletRequest servletRequest) throws Exception {
+		logger.info("jmxInvoke ...");
+		ModelAndView mav = new ModelAndView();
+		
+		if (producer != null) {
+			producer.generateMessages();
+			mav.addObject("movie", producer);
+		} else {
+			mav.addObject("error", "null!!");
+		}
+		
+		logger.info("jmxInvoke sucess ... redirect to browse... ");
+		
+		mav.setView(new RedirectView("filename.htm?path=about"));
 		return mav;
 	}
 

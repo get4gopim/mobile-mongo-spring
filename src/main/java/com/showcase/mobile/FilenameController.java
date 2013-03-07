@@ -19,6 +19,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mobile.device.Device;
 import org.springframework.mobile.device.DeviceUtils;
 import org.springframework.mobile.device.site.SitePreference;
@@ -31,6 +32,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.UrlPathHelper;
 
+import com.showcase.service.MovieService;
+
 /**
  * Handles requests for the About page.
  * @author Roy Clarkson
@@ -40,6 +43,9 @@ public class FilenameController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(FilenameController.class);
 
+	@Autowired
+	private MovieService movieService;
+	
 	/**
 	 * Show the About page to the user.
 	 * Declares a {@link SitePreference} parameter to show how you can resolve the user's site preference.
@@ -52,6 +58,8 @@ public class FilenameController {
 		ModelAndView mav = new ModelAndView();
 		String path = servletRequest.getParameter("path");
 		logger.info("filename?path = " + path);
+		
+		movieService.getFromCache("9952013448");
 		
 		/*Device currentDevice = DeviceUtils.getCurrentDevice(servletRequest);
 		mav.addObject("currentDevice", currentDevice.toString());*/

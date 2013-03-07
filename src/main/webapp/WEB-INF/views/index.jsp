@@ -48,6 +48,7 @@
 					<li><a href="filename.htm?path=signin">Sing In</a></li>
 					<li><a href="filename.htm?path=contacts">Contact Us</a></li>
 					<li><a href="filename.htm?path=about">About Us</a></li>
+					<li><a href="jmxInvoke.htm">Jmx Invoke</a></li>
 				</ul>
 			</div>
 			

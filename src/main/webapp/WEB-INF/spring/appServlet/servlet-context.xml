@@ -51,11 +51,15 @@
 	<beans:import resource="app-context.xml" />
 	
 	<beans:bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" >
-        <beans:property name="basenames">
+        <!-- <beans:property name="basenames">
             <beans:list>
-                <beans:value>com/showcase/conf/messages</beans:value>
+                <beans:value>classpath:com/showcase/jms/listener/messages</beans:value>
             </beans:list>
-        </beans:property>
+        </beans:property> -->
+        
+        <beans:property name="basename">
+			<beans:value>messages</beans:value>
+		</beans:property>
     </beans:bean>
 
 </beans:beans>
